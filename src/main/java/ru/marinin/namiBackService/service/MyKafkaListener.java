@@ -2,12 +2,12 @@ package ru.marinin.namiBackService.service;
 
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Component;
-import ru.marinin.namiBackService.Message;
+import ru.marinin.namiBackService.model.Request;
 
 @Component
 class MyKafkaListener {
-    @KafkaListener(topics = "test_topic", groupId = "myGroup")
-    void listener(Message data) {
+    @KafkaListener(topics = "request_topic", groupId = "myGroup")
+    void listener(Request data) {
         System.out.println(data);
     }
 }
