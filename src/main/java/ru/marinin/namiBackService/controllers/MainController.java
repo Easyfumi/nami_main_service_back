@@ -21,4 +21,14 @@ public class MainController {
         model.addAttribute("title", "Admin страница");
         return "admin";
     }
+    @GetMapping("/open")
+    public String openController(Model model) {
+        model.addAttribute("title", "Open страница");
+        return "open";
+    }
+    @GetMapping("/open/deepopen")
+    public String deepopenController(Model model) {
+        model.addAttribute("title", "Deep Open страница");
+        return "deepopen";
+    }
 }

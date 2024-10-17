@@ -8,6 +8,7 @@ import org.springframework.security.config.annotation.authentication.configurati
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.core.userdetails.User;
 
+import ru.marinin.namiBackService.model.enums.Role;
 import ru.marinin.namiBackService.repository.UserRepository;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -58,9 +59,9 @@ public class SecurityConfig {
         return http
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(auth -> {
-                    auth.requestMatchers("/registration", "/login").permitAll();
-                    auth.requestMatchers("/", "/user").hasRole("USER");
-                    auth.requestMatchers("/admin").hasRole("ADMIN");
+                    auth.requestMatchers("/", "/registration","/open/*", "/open").permitAll();
+                    auth.requestMatchers("/user").hasAnyAuthority("USER", "ADMIN");
+                    auth.requestMatchers("/admin").hasAnyAuthority("ADMIN");
                 })
                 .httpBasic(Customizer.withDefaults())
                 .sessionManagement(c -> c.sessionCreationPolicy(SessionCreationPolicy.ALWAYS))

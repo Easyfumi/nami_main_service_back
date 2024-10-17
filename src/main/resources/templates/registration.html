@@ -9,17 +9,54 @@
 </head>
 <body>
 <header th:insert="blocks/header :: header"></header>
-<h1>Ovito</h1><hr>
-<h4>Регистрация</h4>
-<form action="/registration" method="post">
-    firstName: <input type="text" name="firstName"><br><br>
-    daddyName: <input type="text" name="daddyName"><br><br>
-    lastName: <input type="text" name="lastName"><br><br>
-    email: <input type="email" name="email"><br><br>
-    Пароль: <input type="password" name="password"><br><br>
-    <input type="submit" value="Зарегестрироваться"/>
-</form>
+<div class="container">
+    <br>
+    <h2 class='text-center'>Регистрация</h2>
+    <div class='row'>
+        <div class='card col-md-6 offset-md-3 offset-md-3'>
+            <div class='card-body'>
+                <form action="/registration" method="post">
+
+
+                    <div class='form-group mb-2'>
+                        <label class='form-label'>Фамилия</label>
+                        <input type="text" name="lastName"
+                               class="form-control">
+                    </div>
+                    <br>
+                    <div class='form-group mb-2'>
+                        <label class='form-label'>Имя</label>
+                        <input type="text" name="firstName"
+                               class="form-control">
+                    </div>
+                    <br>
+                    <div class='form-group mb-2'>
+                        <label class='form-label'>Отчество</label>
+                        <input type="text" name="daddyName"
+                               class="form-control">
+                    </div>
+                    <br>
+                    <div class='form-group mb-2'>
+                        <label class='form-label'>Email</label>
+                        <input type="email" name="email"
+                               class="form-control">
+                    </div>
+                    <br>
+                    <div class='form-group mb-2'>
+                        <label class='form-label'>Пароль</label>
+                        <input type="password" name="password"
+                               class="form-control">
+                    </div>
+                    <br>
+                    <button type="submit" class="btn btn-primary">Зарегестрироваться</button>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 <footer th:insert="blocks/footer :: footer"></footer>
+
 </body>
 </html>
 
