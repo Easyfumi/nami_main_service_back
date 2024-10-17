@@ -8,14 +8,36 @@
 </head>
 <body>
 <header th:insert="blocks/header :: header"></header>
-
-<h4>Авторизация</h4>
-<form action="/login" method="post">
-    Эл. почта: <input type="email" name="username"><br><br>
-    Пароль: <input type="password" name="password"><br><br>
-    <input type="submit" value="Вход"/>
-</form>
-<a href="/registration">Зарегистрироваться</a>
+<div class="container">
+    <br>
+    <h2 class='text-center'>Авторизация</h2>
+    <div class='row'>
+        <div class='card col-md-6 offset-md-3 offset-md-3'>
+            <div class='card-body'>
+                <form action="/login" method="post">
+                    <br>
+                    <br>
+                    <div class='form-group mb-2'>
+                        <label class='form-label'>Эл. почта</label>
+                        <input type="email" name="username"
+                               class="form-control">
+                    </div>
+                    <br>
+                    <div class='form-group mb-2'>
+                        <label class='form-label'>Пароль</label>
+                        <input type="password" name="password"
+                               class="form-control">
+                    </div>
+                    <br>
+                    <div class="text-end">
+                        <a href="/registration" class="btn btn-primary me-2" role="button" data-bs-toggle="button">Зарегестрироваться</a>
+                        <button type="submit" class="btn btn-success me-2" >Войти</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 <footer th:insert="blocks/footer :: footer"></footer>
 </body>
 </html>
