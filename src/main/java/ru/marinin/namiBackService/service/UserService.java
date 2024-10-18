@@ -8,6 +8,8 @@ import ru.marinin.namiBackService.model.User;
 import ru.marinin.namiBackService.model.enums.Role;
 import ru.marinin.namiBackService.repository.UserRepository;
 
+import java.util.List;
+
 
 @Service
 @RequiredArgsConstructor
@@ -29,5 +31,9 @@ public class UserService {
             userRepository.save(user);
             return true;
         }
+    }
+
+    public List<User> getAllExperts() {
+        return userRepository.findAll();
     }
 }
