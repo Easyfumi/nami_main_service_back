@@ -61,7 +61,7 @@ public class SecurityConfig {
                 .authorizeHttpRequests(auth -> {
                     auth.requestMatchers("/registration","/open/*", "/open", "/login", "/logout").permitAll();
                     auth.requestMatchers("/user", "/").hasAnyAuthority("USER", "ADMIN");
-                    auth.requestMatchers("/admin", "/admin/*").hasAnyAuthority("ADMIN");
+                    auth.requestMatchers("/admin", "/admin/*", "/admin/experts/*", "/admin/experts/*/*").hasAnyAuthority("ADMIN");
                 })
                 .formLogin(formLogin ->
                         formLogin

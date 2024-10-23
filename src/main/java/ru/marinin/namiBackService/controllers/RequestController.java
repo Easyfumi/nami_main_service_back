@@ -3,21 +3,20 @@ package ru.marinin.namiBackService.controllers;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
 import ru.marinin.namiBackService.service.RequestService;
-@CrossOrigin("*")
-@RestController
-@RequestMapping("/api/requests")
+
+@Controller
 @RequiredArgsConstructor
 public class RequestController {
 
     private final RequestService requestService;
 
-    @GetMapping
-    public ResponseEntity<?> getAll() {
-        return new ResponseEntity<>(requestService.getAllRequests(), HttpStatus.OK);
+    @GetMapping("/admin/newRequests")
+    public String newRequestsController(@RequestParam(name = "title", required = false) String title, Model model) {
+        model.addAttribute("newRequests", requestService.getAllRequests());
+        return "newRequests";
     }
 }

@@ -25,7 +25,6 @@ public class UserService {
         } else {
             user.setActive(true);
             user.setPassword(passwordEncoder.encode(user.getPassword()));
-            user.getRoles().add(Role.USER);
             System.out.println("Saving new user with email: " + email + ".");
             System.out.println(user);
             userRepository.save(user);
@@ -35,5 +34,23 @@ public class UserService {
 
     public List<User> getAllExperts() {
         return userRepository.findAll();
+    }
+
+    public User getById(long id) {
+        return userRepository.getReferenceById(id);
+    }
+
+    public void updateRoleToUser(long id) {
+        User user = userRepository.getReferenceById(id);
+        user.getRoles().clear();
+        user.getRoles().add(Role.USER);
+        userRepository.save(user);
+    }
+
+    public void updateRoleToAdmin(long id) {
+        User user = userRepository.getReferenceById(id);
+        user.getRoles().clear();
+        user.getRoles().add(Role.ADMIN);
+        userRepository.save(user);
     }
 }

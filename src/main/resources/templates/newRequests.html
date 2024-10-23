@@ -15,20 +15,20 @@
     <table class="table table-striped">
         <thead>
         <tr>
-            <th scope="col">Фамилия</th>
-            <th scope="col">Имя</th>
-            <th scope="col">Отчество</th>
-            <th scope="col">Email</th>
-            <th scope="col">Доступ</th>
+            <th scope="col">Дата подачи</th>
+            <th scope="col">Заявитель</th>
+            <th scope="col">Тип</th>
+            <th scope="col">ФИО заявителя</th>
+            <th scope="col">Email заявителя</th>
             <th scope="col"></th>
         </tr>
         </thead>
-        <tr th:each="element : ${experts}">
-            <td th:text="${element.lastName}"/>
-            <td th:text="${element.firstName}"/>
-            <td th:text="${element.daddyName}"/>
+        <tr th:each="element : ${newRequests}">
+            <td th:text="${element.dateTime}"/>
+            <td th:text="${element.factoryName}"/>
+            <td th:text="${element.type}"/>
+            <td th:text="${element.personData}"/>
             <td th:text="${element.email}"/>
-            <td th:text="${element.roles}"/>
             <td><a th:href="'/admin/experts/'+${element.id}" class="btn btn-info">Подробнее</a></td>
             </tr>
         </tbody>
