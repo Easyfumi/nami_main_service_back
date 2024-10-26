@@ -9,10 +9,10 @@ import ru.marinin.namiBackService.model.Request;
 class MyKafkaListener {
 
     @Autowired
-    RequestService requestService;
+    RequestDTOService requestDTOService;
 
     @KafkaListener(topics = "request_topic", groupId = "myGroup")
     void listener(Request data) {
-        requestService.saveNewRequest(data);
+        requestDTOService.saveNewRequest(data);
     }
 }

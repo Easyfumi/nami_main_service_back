@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
 <head>
     <title th:text="${title}"/>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
@@ -12,27 +12,50 @@
 <nav th:insert="blocks/adminnavbar :: adminnavbar"></nav>
 <br>
 <div class="container">
+
+
     <table class="table table-striped">
         <thead>
         <tr>
+            <th style="width:5%" scope="col">#</th>
             <th scope="col">Дата подачи</th>
             <th scope="col">Заявитель</th>
             <th scope="col">Тип</th>
             <th scope="col">ФИО заявителя</th>
             <th scope="col">Email заявителя</th>
+            <th scope="col">Эксперт</th>
             <th scope="col"></th>
         </tr>
         </thead>
         <tr th:each="element : ${newRequests}">
-            <td th:text="${element.dateTime}"/>
-            <td th:text="${element.factoryName}"/>
-            <td th:text="${element.type}"/>
-            <td th:text="${element.personData}"/>
-            <td th:text="${element.email}"/>
-            <td><a th:href="'/admin/experts/'+${element.id}" class="btn btn-info">Подробнее</a></td>
+            <form action="/admin/newRequests" method="post">
+
+                <td><input type="text" th:value="${element.id}" name="id" class="form-control" readonly></td>
+                <td th:text="${element.dateTime}"/>
+                <td th:text="${element.factoryName}"/>
+                <td th:text="${element.type}"/>
+                <td th:text="${element.personData}"/>
+                <td th:text="${element.email}"/>
+
+
+            <td>
+                <select name="user_id" id="expert-select">
+                    <option value="">--Выберите эксперта--</option>
+                    <option th:each="elem: ${allExperts}" th:value="${elem.id}" th:text="${elem.firstName}">
+                </select>
+            </td>
+
+            <td>
+                <button type="submit" class="btn btn-primary btn-sm">Назначить</button>
+            </td>
             </tr>
+        </form>
         </tbody>
     </table>
+
+
+
+
 </div>
 <footer th:insert="blocks/footer :: footer"></footer>
 </body>
