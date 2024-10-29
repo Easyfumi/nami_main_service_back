@@ -20,7 +20,9 @@
             <th style="width:5%" scope="col">#</th>
             <th scope="col">Дата подачи</th>
             <th scope="col">Заявитель</th>
-            <th scope="col">Тип</th>
+            <th scope="col">Обозначение типа</th>
+            <th scope="col">Тип объекта</th>
+            <th scope="col">Категория</th>
             <th scope="col">ФИО заявителя</th>
             <th scope="col">Email заявителя</th>
             <th scope="col">Эксперт</th>
@@ -35,6 +37,8 @@
                 <td th:text="${element.dateTime}"/>
                 <td th:text="${element.factoryName}"/>
                 <td th:text="${element.type}"/>
+                <td th:text="${element.vehicleType}"/>
+                <td th:text="${element.category}"/>
                 <td th:text="${element.personData}"/>
                 <td th:text="${element.email}"/>
 
@@ -42,7 +46,7 @@
             <td>
                 <select name="user_id" id="expert-select">
                     <option value="">--Выберите эксперта--</option>
-                    <option th:each="elem: ${allExperts}" th:value="${elem.id}" th:text="${elem.firstName}">
+                    <option th:each="elem: ${allExperts}" th:value="${elem.id}" th:text="${elem.lastName} + ' ' +${elem.firstName} + ' ' + ${elem.daddyName}">
                 </select>
             </td>
 

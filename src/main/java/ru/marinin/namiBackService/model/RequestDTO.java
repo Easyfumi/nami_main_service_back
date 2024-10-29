@@ -20,6 +20,8 @@ public class RequestDTO {
     private String personData;
     private String email;
     private String type;
+    private String vehicleType;
+    private String category;
     private String pathToFileRequest;
     private String pathToFileOTO;
     private String description;
@@ -34,6 +36,8 @@ public class RequestDTO {
         this.personData = KafkaRequest.getPersonData();
         this.email = KafkaRequest.getEmail();
         this.type = KafkaRequest.getType();
+        this.vehicleType = KafkaRequest.getVehicleType();
+        this.category = KafkaRequest.getCategory();
         this.pathToFileRequest = KafkaRequest.getPathToFileRequest();
         this.pathToFileOTO = KafkaRequest.getPathToFileOTO();
         this.description = KafkaRequest.getDescription();

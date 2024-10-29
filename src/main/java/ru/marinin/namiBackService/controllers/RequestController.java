@@ -42,6 +42,8 @@ public class RequestController {
         request.setEmail(requestDTO.get().getEmail());
         request.setDescription(requestDTO.get().getDescription());
         request.setType(requestDTO.get().getType());
+        request.setVehicleType(requestDTO.get().getVehicleType());
+        request.setCategory(requestDTO.get().getCategory());
         request.setDateTime(requestDTO.get().getDateTime());
         request.setPathToFileRequest(requestDTO.get().getPathToFileRequest());
         request.setPathToFileOTO(requestDTO.get().getPathToFileOTO());
