@@ -5,11 +5,6 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import ru.marinin.namiBackService.model.enums.Role;
-
-import java.time.LocalDateTime;
-import java.util.HashSet;
-import java.util.Set;
 
 @Data
 @Entity
@@ -26,7 +21,7 @@ public class Request {
     private String pathToFileRequest;
     private String pathToFileOTO;
     private String description;
-    private LocalDateTime localDateTime;
+    private String dateTime;
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id", referencedColumnName = "id")
     private User expert;

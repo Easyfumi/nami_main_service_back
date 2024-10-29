@@ -27,6 +27,7 @@
             <th scope="col"></th>
         </tr>
         </thead>
+        <tbody>
         <tr th:each="element : ${newRequests}">
             <form action="/admin/newRequests" method="post">
 
@@ -48,8 +49,9 @@
             <td>
                 <button type="submit" class="btn btn-primary btn-sm">Назначить</button>
             </td>
-            </tr>
-        </form>
+            </form>
+        </tr>
+
         </tbody>
     </table>
 

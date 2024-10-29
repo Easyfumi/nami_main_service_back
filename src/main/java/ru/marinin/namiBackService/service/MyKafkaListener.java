@@ -3,7 +3,7 @@ package ru.marinin.namiBackService.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Component;
-import ru.marinin.namiBackService.model.Request;
+import ru.marinin.namiBackService.model.KafkaRequest;
 
 @Component
 class MyKafkaListener {
@@ -12,7 +12,7 @@ class MyKafkaListener {
     RequestDTOService requestDTOService;
 
     @KafkaListener(topics = "request_topic", groupId = "myGroup")
-    void listener(Request data) {
+    void listener(KafkaRequest data) {
         requestDTOService.saveNewRequest(data);
     }
 }

@@ -2,7 +2,7 @@ package ru.marinin.namiBackService.service;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import ru.marinin.namiBackService.model.Request;
+import ru.marinin.namiBackService.model.KafkaRequest;
 import ru.marinin.namiBackService.model.RequestDTO;
 import ru.marinin.namiBackService.repository.RequestDTORepository;
 
@@ -21,10 +21,10 @@ public class RequestDTOService {
 //        Request request1 = requestRepository.save(request);
 //    }
 
-    public void saveNewRequest(Request request) {
-        RequestDTO requestDTO = new RequestDTO(request);
+    public void saveNewRequest(KafkaRequest KafkaRequest) {
+        RequestDTO requestDTO = new RequestDTO(KafkaRequest);
         RequestDTO requestDTOFromDB = requestDTORepository.save(requestDTO);
-        System.out.println(request);
+        System.out.println(KafkaRequest);
     }
 
     public List<RequestDTO> getAllRequests() {

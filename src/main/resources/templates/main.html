@@ -8,7 +8,41 @@
 </head>
 <body>
 <header th:insert="blocks/header :: header"></header>
-<p th:text="|Привет, это ${title}!|"/>
+<h1 th:text="${title}"/>
+<div class="container">
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th style="width:5%" scope="col">#</th>
+            <th scope="col">Дата подачи</th>
+            <th scope="col">Заявитель</th>
+            <th scope="col">Тип</th>
+            <th scope="col">ФИО заявителя</th>
+            <th scope="col">Email заявителя</th>
+            <th scope="col"></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="element : ${myRequests}">
+                <td><input type="text" th:value="${element.id}" name="id" class="form-control" readonly></td>
+                <td th:text="${element.dateTime}"/>
+                <td th:text="${element.factoryName}"/>
+                <td th:text="${element.type}"/>
+                <td th:text="${element.personData}"/>
+                <td th:text="${element.email}"/>
+                <td>
+                <td><a th:href="'/request/' +${element.id}" class="btn btn-success">Подробнее...</a></td>
+                </td>
+        </tr>
+        </tbody>
+    </table>
+
+
+
+
+</div>
+
+
 <footer th:insert="blocks/footer :: footer"></footer>
 </body>
 </html>

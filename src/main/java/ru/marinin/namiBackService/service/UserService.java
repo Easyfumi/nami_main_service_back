@@ -1,8 +1,11 @@
 package ru.marinin.namiBackService.service;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import ru.marinin.namiBackService.model.Request;
 import ru.marinin.namiBackService.model.User;
 
 import ru.marinin.namiBackService.model.enums.Role;
@@ -14,7 +17,9 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 public class UserService {
+
     private final UserRepository userRepository;
+    private final RequestService requestService;
     private final PasswordEncoder passwordEncoder;
 
     public boolean createUser(User user) {
@@ -52,5 +57,20 @@ public class UserService {
         user.getRoles().clear();
         user.getRoles().add(Role.ADMIN);
         userRepository.save(user);
+    }
+
+    public String getCurrentUser() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        return authentication.getName();
+    }
+
+    public User findByEmail(String email) {
+        return userRepository.findByEmail(email);
+    }
+
+    public List<Request> getAllWithCurrentExpert(){
+        String curName = this.getCurrentUser();
+        long curId = this.findByEmail(curName).getId();
+        return requestService.getAllRequestsWithExpertId(curId);
     }
 }

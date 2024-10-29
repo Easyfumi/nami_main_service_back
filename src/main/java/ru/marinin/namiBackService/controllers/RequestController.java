@@ -39,9 +39,10 @@ public class RequestController {
 
         Request request = new Request();
         request.setPersonData(requestDTO.get().getPersonData());
-        request.setEmail(requestDTO.get().getPersonData());
+        request.setEmail(requestDTO.get().getEmail());
         request.setDescription(requestDTO.get().getDescription());
         request.setType(requestDTO.get().getType());
+        request.setDateTime(requestDTO.get().getDateTime());
         request.setPathToFileRequest(requestDTO.get().getPathToFileRequest());
         request.setPathToFileOTO(requestDTO.get().getPathToFileOTO());
         request.setFactoryName(requestDTO.get().getFactoryName());
@@ -57,8 +58,13 @@ public class RequestController {
         } else {
             return "redirect:/admin/newRequests";
         }
+    }
 
+    @GetMapping("/request/{id}")
+    public String requestDetails(@PathVariable(value = "id") long id, Model model) {
 
+        model.addAttribute("request", requestService.getById(id));
+        return "request_details";
     }
 
 }
