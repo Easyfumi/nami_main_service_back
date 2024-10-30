@@ -60,7 +60,7 @@ public class SecurityConfig {
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(auth -> {
                     auth.requestMatchers("/registration","/open/*", "/open", "/login", "/logout").permitAll();
-                    auth.requestMatchers("/user", "/", "/request/*").hasAnyAuthority("USER", "ADMIN");
+                    auth.requestMatchers("/user", "/", "/request/*", "/request/fileR/*").hasAnyAuthority("USER", "ADMIN");
                     auth.requestMatchers("/admin", "/admin/*", "/admin/experts/*", "/admin/experts/*/*").hasAnyAuthority("ADMIN");
                 })
                 .formLogin(formLogin ->

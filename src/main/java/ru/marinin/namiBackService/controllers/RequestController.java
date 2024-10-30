@@ -12,7 +12,7 @@ import ru.marinin.namiBackService.service.RequestService;
 import ru.marinin.namiBackService.service.UserService;
 
 import java.util.Optional;
-
+@CrossOrigin("*")
 @Controller
 @RequiredArgsConstructor
 public class RequestController {

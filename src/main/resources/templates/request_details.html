@@ -12,44 +12,74 @@
 
 <div class="container">
     <br>
-    <h3 class='text-center' th:text="|Заявка на тип ${request.type}|"></h3>
+    <h2 class='text-center' th:text="|Заявка на ${request.vehicleType}|"></h2>
+    <br><br>
     <div class='row'>
         <div class='card col-md-6 offset-md-3 offset-md-3'>
             <div class='card-body'>
                 <form action="/request_update" method="post">
+                        <div class='form-group mb-2'>
+                            <h5>Внутренний регистрационный номер:</h5>
+                            <input type="text" name="internalNumber"
+                                   class="form-control" style="width: 100px;">
+                        </div>
+                        <br>
+
 
                     <div class='form-group mb-2'>
-                        <label class='form-label'>Внутренний регистрационный номер</label>
-                        <input type="text" name="internalNumber"
-                               class="form-control">
-                    </div>
-
-                    <div class='form-group mb-2'>
-                        <h6>Дата подачи заявки:</h6>
-                        <h4 th:text="${request.dateTime}"></h4>
-                    </div>
-                    <br>
-
-                    <div class='form-group mb-2'>
-                        <h6>Дата подачи заявки:</h6>
-                        <h4 th:text="${request.dateTime}"></h4>
+                        <h5>Дата подачи заявки:</h5>
+                        <td><input type="text" th:value="${request.dateTime}" name="dateTime" class="form-control" style="width: 150px;" readonly></td>
                     </div>
                     <br>
 
                     <div class='form-group mb-2'>
-                        <h6>Заявитель:</h6>
-                        <h4 th:text="${request.factoryName}"></h4>
+                        <h5>Заявитель:</h5>
+                        <td><input type="text" th:value="${request.factoryName}" name="factoryName" class="form-control" readonly></td>
                     </div>
                     <br>
 
                     <div class='form-group mb-2'>
-                        <h6>Информация для связи по заявке:</h6>
-                        <h4 th:text="${request.personData}"></h4>
-                        <h4 th:text="${request.email}"></h4>
+                        <h5>Обозначение типа:</h5>
+                        <td><input type="text" th:value="${request.type}" name="type" class="form-control" readonly></td>
                     </div>
                     <br>
 
+                    <div class='form-group mb-2'>
+                        <h5>Категория:</h5>
+                        <td><input type="text" th:value="${request.category}" name="category" class="form-control" readonly></td>
+                    </div>
+                    <br>
 
+                    <div class='form-group mb-2'>
+                        <h5>Информация для связи по заявке:</h5>
+                        <td><input type="text" th:value="${request.personData}" name="personData" class="form-control" readonly></td>
+                        <td><input type="text" th:value="${request.email}" name="email" class="form-control" readonly></td>
+                    </div>
+                    <br>
+
+                    <div class='form-group mb-2'>
+                        <h5>Комментарий от заявителя:</h5>
+                        <td><input type="text" th:value="${request.description}" name="description" class="form-control" readonly></td>
+                    </div>
+
+                    <div class='form-group mb-2'>
+                        <h5>Скачать прикрепленные файлы:</h5>
+                        <td><a th:href="'/request/fileR/'+${request.id}" class="btn btn-info">Заявка</a></td>
+                    </div>
+
+
+                    <br>
+                    <br>
+                    <br>
+
+                    <div class='form-group mb-2'>
+                        <h5>Поля для заметок:</h5>
+                        <td><textarea rows="10" name="userNotes" class="form-control"></textarea></td>
+                    </div>
+                    <br>
+                    <div class="text-end">
+                        <button type="submit" class="btn btn-primary">Cохранить</button>
+                    </div>
                 </form>
             </div>
         </div>
