@@ -61,14 +61,12 @@
                         <h5>Комментарий от заявителя:</h5>
                         <td><input type="text" th:value="${request.description}" name="description" class="form-control" readonly></td>
                     </div>
-
+                    <br>
                     <div class='form-group mb-2'>
                         <h5>Скачать прикрепленные файлы:</h5>
-                        <td><a th:href="'/request/fileR/'+${request.id}" class="btn btn-info">Заявка</a></td>
+                        <td><a th:href="'/request/fileR/'+${request.id}" class="btn btn-outline-dark">Заявка</a></td>
+                        <td><a th:href="'/request/fileR/'+${request.id}" class="btn btn-outline-dark">Общее тех. описание</a></td>
                     </div>
-
-
-                    <br>
                     <br>
                     <br>
 
