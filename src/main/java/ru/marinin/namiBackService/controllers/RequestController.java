@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import ru.marinin.namiBackService.mappers.RequestMapper;
 import ru.marinin.namiBackService.model.Request;
 import ru.marinin.namiBackService.model.RequestDTO;
 import ru.marinin.namiBackService.model.User;
@@ -27,30 +28,19 @@ public class RequestController {
         model.addAttribute("allExperts",userService.getAllExperts());
         return "newRequests";
     }
+
     @PostMapping("/admin/newRequests")
     public String selectExpert(@RequestParam long id, @RequestParam long user_id) {
-        Optional<RequestDTO> requestDTO = requestDTOService.findById(id);
-        System.out.println(requestDTO);
 
+        Optional<RequestDTO> requestDTO = requestDTOService.findById(id);
         User user = userService.getById(user_id);
-        System.out.println(user);
 
         if (requestDTO.isEmpty()) return "redirect:/admin/newRequests";
 
-        Request request = new Request();
-        request.setPersonData(requestDTO.get().getPersonData());
-        request.setEmail(requestDTO.get().getEmail());
-        request.setDescription(requestDTO.get().getDescription());
-        request.setType(requestDTO.get().getType());
-        request.setVehicleType(requestDTO.get().getVehicleType());
-        request.setCategory(requestDTO.get().getCategory());
-        request.setDateTime(requestDTO.get().getDateTime());
-        request.setPathToFileRequest(requestDTO.get().getPathToFileRequest());
-        request.setPathToFileOTO(requestDTO.get().getPathToFileOTO());
-        request.setFactoryName(requestDTO.get().getFactoryName());
-        request.setExpert(user);
 
-        System.out.println(request);
+        Request request = RequestMapper.RDTOtoR(requestDTO, user);
+
+
 
         if (requestService.saveRequest(request)) {
             System.out.println("По заявке на тип " + requestDTO.get().getType() + " назначен эксперт "

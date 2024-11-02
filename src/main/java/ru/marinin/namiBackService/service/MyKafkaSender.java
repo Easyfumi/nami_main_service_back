@@ -2,18 +2,17 @@ package ru.marinin.namiBackService.service;
 
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Component;
-import ru.marinin.namiBackService.model.KafkaSendRequest;
-import ru.marinin.zaklRequest.model.KafkaRequest;
+import ru.marinin.namiBackService.model.RequestForProducer;
 
 @Component
 public class MyKafkaSender {
-    private final KafkaTemplate<String, KafkaSendRequest> kafkaTemplate;
+    private final KafkaTemplate<String, RequestForProducer> kafkaTemplate;
 
-    public MyKafkaSender(KafkaTemplate<String, KafkaSendRequest> kafkaTemplate) {
+    public MyKafkaSender(KafkaTemplate<String, RequestForProducer> kafkaTemplate) {
         this.kafkaTemplate = kafkaTemplate;
     }
 
-    public void sendMessage(KafkaSendRequest KafkaSendRequest, String topicName) {
-        kafkaTemplate.send(topicName, KafkaSendRequest);
+    public void sendMessage(RequestForProducer RequestForProducer, String topicName) {
+        kafkaTemplate.send(topicName, RequestForProducer);
     }
 }

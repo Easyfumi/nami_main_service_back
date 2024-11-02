@@ -3,7 +3,7 @@ package ru.marinin.namiBackService.model;
 import lombok.Data;
 
 @Data
-public class KafkaSendRequest {
+public class RequestForProducer {
     private long id;
     private long internalNumber;
     private String factoryName;

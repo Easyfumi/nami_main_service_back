@@ -11,7 +11,7 @@ import org.springframework.kafka.core.ConsumerFactory;
 import org.springframework.kafka.core.DefaultKafkaConsumerFactory;
 import org.springframework.kafka.listener.ConcurrentMessageListenerContainer;
 import org.springframework.kafka.support.serializer.*;
-import ru.marinin.namiBackService.model.KafkaRequest;
+import ru.marinin.namiBackService.model.RequestForConsumer;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -22,11 +22,11 @@ public class KafkaConsumerConfig {
     private String bootstrapServers;
 
     @Bean
-    public ConsumerFactory<String, KafkaRequest> consumerFactory() {
+    public ConsumerFactory<String, RequestForConsumer> consumerFactory() {
 
         Map<String, Object> props = new HashMap<>();
 
-        JsonDeserializer<KafkaRequest> deserializer = new JsonDeserializer<>(KafkaRequest.class);
+        JsonDeserializer<RequestForConsumer> deserializer = new JsonDeserializer<>(RequestForConsumer.class);
         deserializer.setRemoveTypeHeaders(false);
         deserializer.addTrustedPackages("*");
         deserializer.setUseTypeMapperForKey(true);
@@ -39,8 +39,8 @@ public class KafkaConsumerConfig {
     }
 
     @Bean
-    public KafkaListenerContainerFactory<ConcurrentMessageListenerContainer<String, KafkaRequest>> kafkaListenerContainerFactory() {
-        ConcurrentKafkaListenerContainerFactory<String, KafkaRequest> factory = new ConcurrentKafkaListenerContainerFactory<>();
+    public KafkaListenerContainerFactory<ConcurrentMessageListenerContainer<String, RequestForConsumer>> kafkaListenerContainerFactory() {
+        ConcurrentKafkaListenerContainerFactory<String, RequestForConsumer> factory = new ConcurrentKafkaListenerContainerFactory<>();
         factory.setConsumerFactory(consumerFactory());
         return factory;
     }

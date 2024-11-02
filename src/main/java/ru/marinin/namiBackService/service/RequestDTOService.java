@@ -2,7 +2,8 @@ package ru.marinin.namiBackService.service;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import ru.marinin.namiBackService.model.KafkaRequest;
+import ru.marinin.namiBackService.mappers.RequestMapper;
+import ru.marinin.namiBackService.model.RequestForConsumer;
 import ru.marinin.namiBackService.model.RequestDTO;
 import ru.marinin.namiBackService.repository.RequestDTORepository;
 
@@ -15,16 +16,8 @@ public class RequestDTOService {
 
     private final RequestDTORepository requestDTORepository;
 
-//    public void saveNewRequest(String factoryName, String personData, String email,
-//    String type, String pathToFileRequest, String pathToFileOTO, String description, LocalDateTime localDateTime) {
-//        Request request = new Request(factoryName, personData, email, type, pathToFileRequest, pathToFileOTO, description, localDateTime);
-//        Request request1 = requestRepository.save(request);
-//    }
-
-    public void saveNewRequest(KafkaRequest KafkaRequest) {
-        RequestDTO requestDTO = new RequestDTO(KafkaRequest);
-        RequestDTO requestDTOFromDB = requestDTORepository.save(requestDTO);
-        System.out.println(KafkaRequest);
+    public void saveNewRequest(RequestForConsumer RequestForConsumer) {
+        requestDTORepository.save(RequestMapper.RFCtoRDTO(RequestForConsumer));
     }
 
     public List<RequestDTO> getAllRequests() {

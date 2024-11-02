@@ -3,7 +3,7 @@ package ru.marinin.namiBackService.model;
 import lombok.Data;
 import java.time.LocalDateTime;
 @Data
-public class KafkaRequest {
+public class RequestForConsumer {
     private String factoryName;
     private String personData;
     private String email;

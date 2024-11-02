@@ -27,29 +27,19 @@ public class SecurityConfig {
 
     final UserRepository userRepository;
 
-
-
     @Bean
     UserDetailsService userDetailsService() {
         return username -> {
-            System.out.println(username+" AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
             ru.marinin.namiBackService.model.User user = userRepository.findByEmail(username);
-            //System.out.println(todoUser.getPassword());
             if (user != null) {
-
-                //System.out.println(role.getClass());
                 var x = user.getRoles().stream().toList().get(0);
-
                 User user1 = new User(user.getEmail(), user.getPassword(), List.of(x));
                 System.out.println(user1);
                 return user1;
             }
-
             return null;
         };
     }
-
-
 
     @Bean
     @SneakyThrows
