@@ -15,19 +15,13 @@ public class RequestService {
     private final RequestRepository requestRepository;
 
     public boolean saveRequest(Request request) {
-     Request savedRequest = requestRepository.save(request);
-     if (savedRequest.getId()!=0) {
-     //    System.out.println("new request saved with id: " + savedRequest.getId());
-         return true;
-     } else {
-         return false;
-     }
+        Request savedRequest = requestRepository.save(request);
+        return savedRequest.getId() != 0;
     }
 
     public List<Request> getAllRequestsWithExpertId(long id) {
         return requestRepository.findAllByUser_id(id);
     }
-
 
     //TODO переделать в Optional<Request>
     public Request getById(long id) {

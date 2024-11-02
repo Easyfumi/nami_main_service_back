@@ -13,6 +13,7 @@ import ru.marinin.namiBackService.service.RequestService;
 import ru.marinin.namiBackService.service.UserService;
 
 import java.util.Optional;
+
 @CrossOrigin("*")
 @Controller
 @RequiredArgsConstructor
@@ -25,7 +26,7 @@ public class RequestController {
     @GetMapping("/admin/newRequests")
     public String newRequestsController(@RequestParam(name = "title", required = false) String title, Model model) {
         model.addAttribute("newRequests", requestDTOService.getAllRequests());
-        model.addAttribute("allExperts",userService.getAllExperts());
+        model.addAttribute("allExperts", userService.getAllExperts());
         return "newRequests";
     }
 
@@ -37,10 +38,7 @@ public class RequestController {
 
         if (requestDTO.isEmpty()) return "redirect:/admin/newRequests";
 
-
         Request request = RequestMapper.RDTOtoR(requestDTO, user);
-
-
 
         if (requestService.saveRequest(request)) {
             System.out.println("По заявке на тип " + requestDTO.get().getType() + " назначен эксперт "

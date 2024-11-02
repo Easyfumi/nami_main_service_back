@@ -25,13 +25,10 @@ public class UserService {
     public boolean createUser(User user) {
         String email = user.getEmail();
         if (userRepository.findByEmail(email)!=null) {
-            System.out.println("ALREADY EXIST");
             return false;
         } else {
             user.setActive(true);
             user.setPassword(passwordEncoder.encode(user.getPassword()));
-            System.out.println("Saving new user with email: " + email + ".");
-            System.out.println(user);
             userRepository.save(user);
             return true;
         }

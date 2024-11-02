@@ -16,17 +16,13 @@ public class RequestDTOService {
 
     private final RequestDTORepository requestDTORepository;
 
-    public void saveNewRequest(RequestForConsumer RequestForConsumer) {
-        requestDTORepository.save(RequestMapper.RFCtoRDTO(RequestForConsumer));
-    }
+    public void saveNewRequest(RequestDTO requestDTO) { requestDTORepository.save(requestDTO); }
 
     public List<RequestDTO> getAllRequests() {
         return requestDTORepository.findAll();
     }
 
-    public Optional<RequestDTO> findById(long id) {
-        return requestDTORepository.findById(id);
-    }
+    public Optional<RequestDTO> findById(long id) { return requestDTORepository.findById(id); }
 
     public void deleteById(long id) {
         requestDTORepository.deleteById(id);

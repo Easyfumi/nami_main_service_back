@@ -5,11 +5,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.multipart.MultipartFile;
 import ru.marinin.namiBackService.service.UserService;
-
 import java.io.IOException;
 
 @Controller
@@ -50,15 +47,5 @@ public class AdminController {
         model.addAttribute("expert", userService.getById(id));
         return "redirect:/admin/experts/{id}";
     }
-/*
-
-
-
-    @PostMapping("/products/{id}/remove")
-    public String productPostDelete(@PathVariable(value = "id") long id, Model model) {
-        productService.deleteProduct(id);
-        return "redirect:/products";
-    }
-*/
 
 }

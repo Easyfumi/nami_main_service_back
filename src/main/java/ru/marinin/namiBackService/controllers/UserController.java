@@ -17,9 +17,9 @@ public class UserController {
         return "registration";
     }
 
+    //TODO добавить проверку на уже существующего юзера
     @PostMapping("/registration")
     public String createUser(User user) {
-        System.out.println(user);
         userService.createUser(user);
         return "redirect:/";
     }

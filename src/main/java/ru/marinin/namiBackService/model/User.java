@@ -33,5 +33,4 @@ public class User {
     @CollectionTable(joinColumns = @JoinColumn(name = "user_id"))
     @Enumerated(EnumType.STRING)
     private Set<Role> roles = new HashSet<>();
-
 }

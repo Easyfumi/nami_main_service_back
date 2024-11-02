@@ -14,17 +14,4 @@ public class RequestForConsumer {
     private String pathToFileOTO;
     private String description;
     private LocalDateTime localDateTime;
-    @Override
-    public String toString() {
-        return "Request{" +
-                "factoryName='" + factoryName + '\'' +
-                ", personData='" + personData + '\'' +
-                ", email='" + email + '\'' +
-                ", type='" + type + '\'' +
-                ", pathToFileRequest='" + pathToFileRequest + '\'' +
-                ", pathToFileOTO='" + pathToFileOTO + '\'' +
-                ", description='" + description + '\'' +
-                ", localDateTime=" + localDateTime +
-                '}';
-    }
 }
