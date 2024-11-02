@@ -1,9 +1,7 @@
 package ru.marinin.namiBackService.mappers;
 
-import ru.marinin.namiBackService.model.Request;
-import ru.marinin.namiBackService.model.RequestDTO;
-import ru.marinin.namiBackService.model.RequestForConsumer;
-import ru.marinin.namiBackService.model.User;
+import org.apache.kafka.common.protocol.types.Field;
+import ru.marinin.namiBackService.model.*;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -65,5 +63,20 @@ public class RequestMapper {
         request.setExpert(user);
         }
         return request;
+    }
+
+    public static RequestForProducer RtoRFP(Request request, String expertInfo) {
+        RequestForProducer requestForProducer = new RequestForProducer();
+        requestForProducer.setInternalNumber(request.getInternalNumber());
+        requestForProducer.setFactoryName(request.getFactoryName());
+        requestForProducer.setPersonData(request.getPersonData());
+        requestForProducer.setEmail(request.getEmail());
+        requestForProducer.setType(request.getType());
+        requestForProducer.setVehicleType(request.getVehicleType());
+        requestForProducer.setCategory(request.getCategory());
+        requestForProducer.setDescription(request.getDescription());
+        requestForProducer.setDateTime(request.getDateTime());
+        requestForProducer.setExpertInfo(expertInfo);
+        return requestForProducer;
     }
 }
