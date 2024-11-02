@@ -7,8 +7,6 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.core.userdetails.User;
-
-import ru.marinin.namiBackService.model.enums.Role;
 import ru.marinin.namiBackService.repository.UserRepository;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -34,7 +32,7 @@ public class SecurityConfig {
     @Bean
     UserDetailsService userDetailsService() {
         return username -> {
-            //System.out.println(username+" AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
+            System.out.println(username+" AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
             ru.marinin.namiBackService.model.User user = userRepository.findByEmail(username);
             //System.out.println(todoUser.getPassword());
             if (user != null) {
